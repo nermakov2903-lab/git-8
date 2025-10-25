@@ -1,7 +1,22 @@
 
 def input_data():
     """Функция для ввода исходных данных"""
-    pass
+    print("Нажмите '1' для ручного ввода")
+    
+    choice = input()
+    
+    if choice == "1":
+        return manual_input()
+    else:
+        print("Неверный выбор. Возврат в главное меню.")
+        return None
+
+def manual_input():
+    """Ручной ввод текста и строки для поиска"""
+    text = input("Введите текст: ")
+    search_string = input("Введите строку для поиска: ")
+    return {"text": text, "search_string": search_string}
+
 
 def process_algorithm(data):
     """Функция для выполнения алгоритма"""
@@ -9,7 +24,7 @@ def process_algorithm(data):
 
 def output_result(result):
     """Функция для вывода результата"""
-   pass
+    pass
 
 def main():
     """Главная функция приложения"""

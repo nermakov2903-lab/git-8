@@ -1,4 +1,3 @@
-
 def input_data():
     """Функция для ввода исходных данных"""
     print("Нажмите '1' для ручного ввода")
@@ -17,14 +16,28 @@ def manual_input():
     search_string = input("Введите строку для поиска: ")
     return {"text": text, "search_string": search_string}
 
-
 def process_algorithm(data):
     """Функция для выполнения алгоритма"""
-    pass
+    text = data["text"]
+    search_string = data["search_string"]
+    
+    # Разбиваем текст на слова
+    words = text.split()
+    
+    # Ищем слова, содержащие подстроку
+    result_words = []
+    for word in words:
+        if search_string.lower() in word.lower():
+            result_words.append(word)
+    
+    return result_words
 
 def output_result(result):
     """Функция для вывода результата"""
-    pass
+    if not result:
+        print("Слова, содержащие указанную подстроку, не найдены.")
+    else:
+        print("Найденные слова:", ", ".join(result))
 
 def main():
     """Главная функция приложения"""
@@ -32,7 +45,7 @@ def main():
     current_result = None
     
     while True:
-        print("1. Ввод исходных данных")
+        print("\n1. Ввод исходных данных")
         print("2. Выполнение алгоритма")
         print("3. Вывод результата")
         print("4. Завершение работы")
@@ -47,6 +60,7 @@ def main():
                 print("Ошибка: Сначала введите данные!")
             else:
                 current_result = process_algorithm(current_data)
+                print("Алгоритм выполнен успешно!")
         elif choice == "3":
             if current_result is None:
                 print("Ошибка: Сначала выполните алгоритм!")
